@@ -25,7 +25,7 @@ To start the api locally
 
 go to http://localhost:3000/todos
 
-## with curl locally 
+### with curl locally 
 
 * POST /todos/ 
 ```
