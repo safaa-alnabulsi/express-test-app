@@ -46,12 +46,23 @@ app.put('/todos/:id', function (req, res) {
         res.status(404).send("Sorry can't find that todo with given ID!")
     }
     else {
-        TODOS[todo_id] = todo_text
-        res.send('Got a POST request and updaed TODOS list item!')
+        TODOS[todo_id] = todo_text;
+        res.send('Got a PUT request and updaed TODOS list item!')
     }
 })
 
+app.delete('/todos/:id', function (req, res) {
+    const todo_id = req.params.id;  
+    if(typeof TODOS[todo_id] === 'undefined') {
+        res.status(404).send("Sorry can't find that todo with given ID!")
+    }
+    else {
+        TODOS.splice(todo_id, 1)
+        res.send('Got a DELETE request and deleted TODOS list item!')
+    }
 
+  })
+  
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
