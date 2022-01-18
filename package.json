@@ -1,0 +1,27 @@
+{
+  "name": "express-test-app",
+  "version": "1.0.0",
+  "description": "testing express",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safaa-alnabulsi/express-test-app.git"
+  },
+  "keywords": [
+    "express",
+    "test",
+    "api"
+  ],
+  "author": "Safaa Alnabulsi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/safaa-alnabulsi/express-test-app/issues"
+  },
+  "homepage": "https://github.com/safaa-alnabulsi/express-test-app#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
