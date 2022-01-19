@@ -29,6 +29,6 @@
     "multer": "^1.4.4"
   },
   "devDependencies": {
-    "supertest": "^6.2.1"
+    "supertest": "^6.2.2"
   }
 }

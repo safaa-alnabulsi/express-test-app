@@ -1,4 +1,5 @@
 var assert = require('assert');
+var expect = require('assert').expect;
 
 var express = require('express');     // npm install --save express
 var request = require('supertest');   // npm install --save-dev supertest
@@ -8,7 +9,7 @@ let TODOS_TEST = ["put on sock", "put on shoe", "tie laces"]
 
 describe('GET scenarios', function () {
 
-    describe('GET /randomtext', function () {
+    context('GET /randomtext', function () {
         it('should return 404 for unsupported endpoints', function (done) {
             request(app)
                 .get('/randomtext')
@@ -42,7 +43,7 @@ describe('GET scenarios', function () {
     });
 
 
-    describe('GET todos/:id', function () {
+    context('GET todos/:id', function () {
 
         it('should show todo item when it exists', function (done) {
             request(app)
@@ -64,6 +65,18 @@ describe('GET scenarios', function () {
 
 
 describe('POST scenarios', function () {
+
+
+    it('should add new todo item', function (done) {
+        request(app).post('/todos')
+                    .send({ title: "new-item" })
+                    .expect(200)
+                    // .end(function(err, res) {
+                    //     res.body.should.include("new_org");
+                    //     done();
+                    // });
+    });
+
 });
 
 
