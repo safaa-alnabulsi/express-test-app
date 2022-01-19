@@ -13,8 +13,7 @@ let ERRORS = {
  404: "Sorry can't find that todo with given ID!"
 }
 app.get('/',(req,res)=>{
-    res.status(200)
-    .redirect('/todos')
+    res.redirect('/todos')
  })
  
 app.get('/todo', (req, res) => {
@@ -31,8 +30,7 @@ app.get('/todos/:id', (req, res) => {
         res.status(404).send(ERRORS[404])
     }
     else {
-        res.status(200)
-        .send({'title': TODOS[todo_id]})
+        res.status(200).send({'title': TODOS[todo_id]})
     }
 })
 
@@ -47,24 +45,26 @@ app.put('/todos/:id', function (req, res) {
     const todo_id = req.params.id;  
     const todo_text = req.body.title;  
     if(typeof TODOS[todo_id] === 'undefined') {
-        res.status(404).send(ERRORS[404])
+        res.status(404);
+        throw new Error(ERRORS[404]);
     }
     else {
         TODOS[todo_id] = todo_text;
-        res.status(200).
-        send('Got a PUT request and updaed TODOS list item!')
+        res.status(200)
+           .send('Got a PUT request and updaed TODOS list item!')
     }
 })
 
 app.delete('/todos/:id', function (req, res) {
     const todo_id = req.params.id;  
     if(typeof TODOS[todo_id] === 'undefined') {
-        res.status(404).send(ERRORS[404])
+        res.status(404);
+        throw new Error(ERRORS[404]);
     }
     else {
         TODOS.splice(todo_id, 1)
         res.status(200)
-        .send('Got a DELETE request and deleted TODOS list item!')
+           .send('Got a DELETE request and deleted TODOS list item!')
     }
 
   })

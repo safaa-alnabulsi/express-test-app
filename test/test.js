@@ -1,7 +1,6 @@
 var assert = require('assert');
 
 var express = require('express');     // npm install --save express
-var expect = require('chai').expect;  // npm install --save-dev chai
 var request = require('supertest');   // npm install --save-dev supertest
 const app = require('../app');
 
@@ -9,8 +8,15 @@ let TODOS_TEST = ["put on sock", "put on shoe", "tie laces"]
 
 describe('GET scenarios', function () {
 
-    describe('GET /todos', function () {
-        it('Redirect and list all todos', function (done) {
+    describe('GET /randomtext', function () {
+        it('should return 404 for unsupported endpoints', function (done) {
+            request(app)
+                .get('/randomtext')
+                .expect(404)
+                .end(done)
+
+        });
+        it('should redirect to /todos and list all todos in deafult path /', function (done) {
             request(app)
                 .get('/')
                 .expect(302)
@@ -19,7 +25,7 @@ describe('GET scenarios', function () {
 
         });
 
-        it('Redirect and list all todos', function (done) {
+        it('should redirect to /todos and list all todos when receiving /todo', function (done) {
             request(app)
                 .get('/todo')
                 .expect(302)
@@ -27,7 +33,7 @@ describe('GET scenarios', function () {
                 .end(done)
         });
 
-        it('List all todos', function (done) {
+        it('should list all todos when receiving /todos', function (done) {
             request(app)
                 .get('/todos')
                 .expect(200, done);
@@ -45,12 +51,10 @@ describe('GET scenarios', function () {
                 .send({ title: "put on shoe" });
         });
 
-        it('throw an error when it does not exists', function (done) {
+        it('should throw an error when todo_id does not exist', function (done) {
             request(app)
                 .get('/todos/11')
-                .expect(404)
-                // .send(app.ERRORS[404])
-                .end(done);
+                .expect(404, done);
         });
     });
 
