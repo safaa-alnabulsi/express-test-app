@@ -1,7 +1,7 @@
-var assert = require('assert');
+// var assert = require('assert');
 var expect = require('assert').expect;
 
-var express = require('express');     // npm install --save express
+// var express = require('express');     // npm install --save express
 var request = require('supertest');   // npm install --save-dev supertest
 const app = require('../app');
 
@@ -9,7 +9,8 @@ let TODOS_TEST = ["put on sock", "put on shoe", "tie laces"]
 
 describe('GET scenarios', function () {
 
-    context('GET /randomtext', function () {
+    context('GET /todos', function () {
+
         it('should return 404 for unsupported endpoints', function (done) {
             request(app)
                 .get('/randomtext')
@@ -37,8 +38,10 @@ describe('GET scenarios', function () {
         it('should list all todos when receiving /todos', function (done) {
             request(app)
                 .get('/todos')
-                .expect(200, done);
-        });
+                .expect(200,
+                    TODOS_TEST,
+                    done);
+     });
 
     });
 
@@ -48,8 +51,10 @@ describe('GET scenarios', function () {
         it('should show todo item when it exists', function (done) {
             request(app)
                 .get('/todos/1')
-                .expect(200, done)
-                .send({ title: "put on shoe" });
+                .expect(200,
+                       { title: "put on shoe" },
+                       done);
+
         });
 
         it('should throw an error when todo_id does not exist', function (done) {
@@ -66,16 +71,15 @@ describe('GET scenarios', function () {
 
 describe('POST scenarios', function () {
 
-
-    it('should add new todo item', function (done) {
-        request(app).post('/todos')
-                    .send({ title: "new-item" })
-                    .expect(200)
-                    // .end(function(err, res) {
-                    //     res.body.should.include("new_org");
-                    //     done();
-                    // });
-    });
+    // it('should add new todo item', function (done) {
+    //     let new_item = "new-item"
+    //     TODOS_TEST.push(new_item)
+    //     request(app).post('/todos')
+    //         .send({ title: new_item })
+    //         .expect(200,
+    //             TODOS_TEST.toString(),
+    //             done);
+    // });
 
 });
 

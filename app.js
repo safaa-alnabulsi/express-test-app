@@ -38,7 +38,7 @@ app.post('/todos', function (req, res) {
     const todo_text = req.body.title;  
     const UPDATED_TODOS = TODOS.push(todo_text)  
     console.log(UPDATED_TODOS)
-    res.send('Got a POST request and added a new item to TODOS list!')
+    res.send(UPDATED_TODOS.toString())
 })
 
 app.put('/todos/:id', function (req, res) {

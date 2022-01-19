@@ -49,4 +49,6 @@ go to http://localhost:3000/todos
 
 ## References
 - https://mochajs.org/
+- https://blog.logrocket.com/a-quick-and-complete-guide-to-mocha-testing-d0e0ea09f09d/
 - http://expressjs.com/en/starter/hello-world.html
+- HTTP assertions: https://www.npmjs.com/package/supertest
