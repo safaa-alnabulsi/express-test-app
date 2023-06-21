@@ -10,8 +10,8 @@ A simple API to get started with writing APIs with express.js
 ## API endpoints 
 * GET /todos redirects to /todos/
 * GET /todos/ returns a list in format [“put on sock”, “put on shoe”, “tie laces”]
-* GET /todos/:id fetches a todo item {“title”: “put on sock”, “idx”: 0}
-* PUT /todos/:id will overwrite the item at the index with the contents of the request body (e.g. a string)
+* GET /todos/:id fetches a todo of id `id` {“title”: “put on sock”, “idx”: 0}
+* PUT /todos/:id updates the todo of id `id` and overwrites the item at the index with the contents of the request body (e.g. a string)
 * POST /todos/ will append the request body (e.g. a string) to the list of strings in memory
 * DELETE /todos/:id will remove a todo item
 

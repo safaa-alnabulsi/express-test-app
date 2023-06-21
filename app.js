@@ -8,10 +8,12 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 
+
 let TODOS = ["put on sock", "put on shoe", "tie laces"]
 let ERRORS = {
  404: "Sorry can't find that todo with given ID!"
 }
+
 app.get('/',(req,res)=>{
     res.redirect('/todos')
  })
